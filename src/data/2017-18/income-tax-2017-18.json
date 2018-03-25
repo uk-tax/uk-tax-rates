@@ -1,0 +1,105 @@
+
+{
+  "taxYear": "2017-18",
+
+  "allowances": {
+    "unit": "GBP",
+    "values": {
+      "personalAllowance": 11500,
+      "personalAllowanceIncomeLimit": 100000,
+      "marriedCouplesIncomeLimit": 28000,
+      "marriedCouplesAllowanceMax": 8445,
+      "marriedCouplesAllowanceMin": 3260,
+      "marriageAllowance": 1150,
+      "blindPersonsAllowance": 2320,
+      "dividendAllowance": 5000,
+      "personalSavingsAllowanceBasicRate": 1000,
+      "personalSavingsAllowanceHigherRate": 500
+    },
+    "names": {
+      "personalAllowance": "personal allowance",
+      "personalAllowanceIncomeLimit": "income limit for personal allowance",
+      "marriedCouplesIncomeLimit": "income limit for Married couple’s allowance",
+      "marriedCouplesAllowanceMax": "maximum amount of married couple’s allowance",
+      "marriedCouplesAllowanceMin": "minimum amount of married couple’s allowance",
+      "marriageAllowance": "marriage allowance",
+      "blindPersonsAllowance": "blind person’s allowance",
+      "dividendAllowance": "dividend allowance",
+      "personalSavingsAllowanceBasicRate": "personal savings allowance for basic rate taxpayers",
+      "personalSavingsAllowanceHigherRate": "personal savings allowance for higher rate taxpayers"
+    }
+  },
+
+  "thresholds": {
+    "unit": "GBP",
+    "values": [
+      0,
+      33500,
+      150000
+    ]
+  },
+
+  "rates": {
+    "unit": "percent",
+    "values": [
+      20,
+      40,
+      45
+    ],
+    "names": [
+      "basic rate",
+      "higher rate",
+      "additional rate"
+    ]
+  },
+
+  "defaultRates": {
+    "unit": "percent",
+    "values": [
+      20,
+      40,
+      45
+    ],
+    "names": [
+      "default basic rate",
+      "default higher rate",
+      "default additional rate"
+    ]
+  },
+
+  "savingsRates": {
+    "unit": "percent",
+    "values": [
+      0,
+      20,
+      40,
+      45
+    ],
+    "names": [
+      "starting rate for savings",
+      "savings basic rate",
+      "savings higher rate",
+      "savings additional rate"
+    ]
+  },
+
+  "startingRateLimitForSavings": {
+    "unit": "GBP",
+    "value": 5000
+  },
+
+  "dividendRates": {
+    "unit": "percent",
+    "values": [
+      7.5,
+      32.5,
+      38.1
+    ],
+    "names": [
+      "dividend ordinary rate",
+      "dividend upper rate",
+      "dividend additional rate"
+    ]
+  }
+
+}

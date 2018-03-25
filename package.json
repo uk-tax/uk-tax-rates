@@ -1,0 +1,19 @@
+{
+  "name": "uk-tax-rates",
+  "version": "0.0.0-dev",
+  "description": "Rates and allowances etc. applicable to taxes in the UK",
+  "main": "src/index.js",
+  "repository": "github.com/uk-tax/uk-tax-rates",
+  "author": "https://github.com/uk-tax/uk-tax-rates/graphs/contributors",
+  "license": "CC-BY-4.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.4.3",
+    "regenerator-runtime": "^0.11.1"
+  }
+}
