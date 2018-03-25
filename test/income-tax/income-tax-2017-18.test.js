@@ -90,6 +90,19 @@ describe('Income Tax 2017-18', () => {
       });
     });
 
+    describe('Blind persons allowance', () => {
+      const value = values.blindPersonsAllowance;
+      const name = names.blindPersonsAllowance;
+      it('should be £2,320', () => {
+        expect(value).toBe(2320);
+      });
+
+      it('should have a name', () => {
+        expect(typeof name).toBe('string');
+        expect(name.length).toBeGreaterThan(10);
+      });
+    });
+
     it('all names and values should be tested', () => {
       expect(names.getKeysNotAccessed()).toEqual([]);
       expect(values.getKeysNotAccessed()).toEqual([]);
