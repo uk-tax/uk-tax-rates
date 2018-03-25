@@ -52,12 +52,39 @@ describe('Income Tax 2017-18', () => {
     });
 
     describe('Personal Allowance', () => {
+      const value = values.personalAllowance;
+      const name = names.personalAllowance;
       it('should be £11,500', () => {
-        expect(values.personalAllowance).toBe(11500);
+        expect(value).toBe(11500);
       });
 
       it('should have a name', () => {
-        const name = names.personalAllowance;
+        expect(typeof name).toBe('string');
+        expect(name.length).toBeGreaterThan(10);
+      });
+    });
+
+    describe('Married couples allowance - maximum', () => {
+      const value = values.marriedCouplesAllowanceMax;
+      const name = names.marriedCouplesAllowanceMax;
+      it('should be £8,445', () => {
+        expect(value).toBe(8445);
+      });
+
+      it('should have a name', () => {
+        expect(typeof name).toBe('string');
+        expect(name.length).toBeGreaterThan(10);
+      });
+    });
+
+    describe('Married couples allowance - minimum', () => {
+      const value = values.marriedCouplesAllowanceMin;
+      const name = names.marriedCouplesAllowanceMin;
+      it('should be £3,260', () => {
+        expect(value).toBe(3260);
+      });
+
+      it('should have a name', () => {
         expect(typeof name).toBe('string');
         expect(name.length).toBeGreaterThan(10);
       });
