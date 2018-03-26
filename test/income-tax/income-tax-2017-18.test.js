@@ -1,5 +1,9 @@
 let testData = require('../../src/data/2017-18/income-tax-2017-18.json');
 
+
+// 1 [The Income Tax (Indexation) Order 2016](http://www.legislation.gov.uk/uksi/2016/1175/made)
+
+
 import { KeyLogger } from '../helpers.js';
 
 describe('Income Tax 2017-18', () => {
@@ -12,31 +16,8 @@ describe('Income Tax 2017-18', () => {
   });
 
   /*
-  "unit": "GBP",
-  "values": {
-    "personalAllowance": 11500,
-    "personalAllowanceIncomeLimit": 100000,
-    "marriedCouplesIncomeLimit": 28000,
-    "marriedCouplesAllowanceMax": 8445,
-    "marriedCouplesAllowanceMin": 3260,
     "marriageAllowance": 1150,
-    "blindPersonsAllowance": 2320,
     "dividendAllowance": 5000,
-    "personalSavingsAllowanceBasicRate": 1000,
-    "personalSavingsAllowanceHigherRate": 500
-  },
-  "names": {
-    "personalAllowance": "personal allowance",
-    "personalAllowanceIncomeLimit": "income limit for personal allowance",
-    "marriedCouplesIncomeLimit": "income limit for Married couple’s allowance",
-    "marriedCouplesAllowanceMax": "maximum amount of married couple’s allowance",
-    "marriedCouplesAllowanceMin": "minimum amount of married couple’s allowance",
-    "marriageAllowance": "marriage allowance",
-    "blindPersonsAllowance": "blind person’s allowance",
-    "dividendAllowance": "dividend allowance",
-    "personalSavingsAllowanceBasicRate": "personal savings allowance for basic rate taxpayers",
-    "personalSavingsAllowanceHigherRate": "personal savings allowance for higher rate taxpayers"
-  }
   */
   describe('Allowances', () => {
     const item = data.allowances;
@@ -51,55 +32,141 @@ describe('Income Tax 2017-18', () => {
       expect(Object.keys(item).sort()).toEqual(['names', 'unit', 'values']);
     });
 
-    describe('Personal Allowance', () => {
+    describe('Personal allowance', () => {
       const value = values.personalAllowance;
       const name = names.personalAllowance;
+      const correctName = 'personal allowance';
+
       it('should be £11,500', () => {
         expect(value).toBe(11500);
       });
 
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
+      });
+    });
+
+    describe('Personal savings allowance', () => {
+      const value = values.personalSavingsAllowance;
+      const name = names.personalSavingsAllowance;
+      const correctName = 'personal savings allowance';
+
+      it('should be £1,000', () => {
+        expect(value).toBe(1000);
+      });
+
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
+      });
+    });
+
+    describe('Personal savings allowance (higher rate taxpayers)', () => {
+      const value = values.personalSavingsAllowanceHigherRate;
+      const name = names.personalSavingsAllowanceHigherRate;
+      const correctName = 'personal savings allowance (higher rate taxpayers)';
+
+      it('should be £500', () => {
+        expect(value).toBe(500);
+      });
+
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
+      });
+    });
+
+    describe('Income limit for personal allowance', () => {
+      const value = values.personalAllowanceIncomeLimit;
+      const name = names.personalAllowanceIncomeLimit;
+      it('should be £100,000', () => {
+        expect(value).toBe(100000);
+      });
+
       it('should have a name', () => {
         expect(typeof name).toBe('string');
         expect(name.length).toBeGreaterThan(10);
       });
     });
 
-    describe('Married couples allowance - maximum', () => {
-      const value = values.marriedCouplesAllowanceMax;
-      const name = names.marriedCouplesAllowanceMax;
-      it('should be £8,445', () => {
-        expect(value).toBe(8445);
-      });
-
-      it('should have a name', () => {
-        expect(typeof name).toBe('string');
-        expect(name.length).toBeGreaterThan(10);
-      });
-    });
-
-    describe('Married couples allowance - minimum', () => {
-      const value = values.marriedCouplesAllowanceMin;
-      const name = names.marriedCouplesAllowanceMin;
-      it('should be £3,260', () => {
-        expect(value).toBe(3260);
-      });
-
-      it('should have a name', () => {
-        expect(typeof name).toBe('string');
-        expect(name.length).toBeGreaterThan(10);
-      });
-    });
-
-    describe('Blind persons allowance', () => {
+    describe('Blind persons allowance (ITIO2016 2(a))', () => {
       const value = values.blindPersonsAllowance;
       const name = names.blindPersonsAllowance;
+      const correctName = 'blind person\'s allowance';
       it('should be £2,320', () => {
         expect(value).toBe(2320);
       });
 
-      it('should have a name', () => {
-        expect(typeof name).toBe('string');
-        expect(name.length).toBeGreaterThan(10);
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
+      });
+    });
+
+    describe('Married couples allowance - minimum (ITIO2016 2(b))', () => {
+      const value = values.marriedCouplesAllowanceMin;
+      const name = names.marriedCouplesAllowanceMin;
+      // Note this is the spelling in the legislation.
+      const correctName = 'married couple\'s allowance - minimum';
+      it('should be £3,260', () => {
+        expect(value).toBe(3260);
+      });
+
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
+      });
+    });
+
+    describe('Married couples allowance - maximum (ITIO2016 2(c,d))', () => {
+      const value = values.marriedCouplesAllowanceMax;
+      const name = names.marriedCouplesAllowanceMax;
+      const correctName = 'married couple\'s allowance - maximum';
+
+      it('should be £8,445', () => {
+        expect(value).toBe(8445);
+      });
+
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
+      });
+    });
+
+    describe('Income limit for married couples allowance (ITIO2016 2(e))', () => {
+      const value = values.marriedCouplesAllowanceIncomeLimit;
+      const name = names.marriedCouplesAllowanceIncomeLimit;
+      const correctName = 'income limit for married couple\'s allowance';
+
+      it('should be £28,000', () => {
+        expect(value).toBe(28000);
+      });
+
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
+      });
+    });
+
+    describe('Dividend allowance', () => {
+      const value = values.dividendAllowance;
+      const name = names.dividendAllowance;
+      const correctName = 'dividend allowance';
+
+      it('should be £5,000', () => {
+        expect(value).toBe(5000);
+      });
+
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
+      });
+    });
+
+    describe('Marriage allowance', () => {
+      const value = values.marriageAllowance;
+      const name = names.marriageAllowance;
+      const correctName = 'marriage allowance';
+
+      it('should be £1,150', () => {
+        expect(value).toBe(1150);
+      });
+
+      it(`should be called "${correctName}"`, () => {
+        expect(name).toBe(correctName);
       });
     });
 
@@ -109,7 +176,6 @@ describe('Income Tax 2017-18', () => {
     });
 
   });
-
 
   describe('Thresholds', () => {
     const item = data.thresholds;

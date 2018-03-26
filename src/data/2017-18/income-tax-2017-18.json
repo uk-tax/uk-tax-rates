@@ -7,26 +7,26 @@
     "values": {
       "personalAllowance": 11500,
       "personalAllowanceIncomeLimit": 100000,
-      "marriedCouplesIncomeLimit": 28000,
+      "marriedCouplesAllowanceIncomeLimit": 28000,
       "marriedCouplesAllowanceMax": 8445,
       "marriedCouplesAllowanceMin": 3260,
       "marriageAllowance": 1150,
       "blindPersonsAllowance": 2320,
       "dividendAllowance": 5000,
-      "personalSavingsAllowanceBasicRate": 1000,
+      "personalSavingsAllowance": 1000,
       "personalSavingsAllowanceHigherRate": 500
     },
     "names": {
       "personalAllowance": "personal allowance",
       "personalAllowanceIncomeLimit": "income limit for personal allowance",
-      "marriedCouplesIncomeLimit": "income limit for Married couple’s allowance",
-      "marriedCouplesAllowanceMax": "maximum amount of married couple’s allowance",
-      "marriedCouplesAllowanceMin": "minimum amount of married couple’s allowance",
+      "marriedCouplesAllowanceIncomeLimit": "income limit for married couple's allowance",
+      "marriedCouplesAllowanceMax": "married couple's allowance - maximum",
+      "marriedCouplesAllowanceMin": "married couple's allowance - minimum",
       "marriageAllowance": "marriage allowance",
-      "blindPersonsAllowance": "blind person’s allowance",
+      "blindPersonsAllowance": "blind person's allowance",
       "dividendAllowance": "dividend allowance",
-      "personalSavingsAllowanceBasicRate": "personal savings allowance for basic rate taxpayers",
-      "personalSavingsAllowanceHigherRate": "personal savings allowance for higher rate taxpayers"
+      "personalSavingsAllowance": "personal savings allowance",
+      "personalSavingsAllowanceHigherRate": "personal savings allowance (higher rate taxpayers)"
     }
   },
 
