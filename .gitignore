@@ -1,4 +1,8 @@
 
 node_modules/
 
+# Yarn spam
 yarn-error.log
+
+# Test coverage output
+coverage/

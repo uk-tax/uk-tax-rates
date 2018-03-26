@@ -1,13 +1,10 @@
-let testData = require('../../src/data/2017-18/income-tax-2017-18.json');
-
-
 // 1 [The Income Tax (Indexation) Order 2016](http://www.legislation.gov.uk/uksi/2016/1175/made)
 
+import { KeyLogger } from '../helpers';
 
-import { KeyLogger } from '../helpers.js';
+const testData = require('../../src/data/2017-18/income-tax-2017-18.json');
 
 describe('Income Tax 2017-18', () => {
-
   const data = new KeyLogger(testData);
 
   it('should be for 2017-18', () => {
@@ -15,10 +12,6 @@ describe('Income Tax 2017-18', () => {
     expect(item).toBe('2017-18');
   });
 
-  /*
-    "marriageAllowance": 1150,
-    "dividendAllowance": 5000,
-  */
   describe('Allowances', () => {
     const item = data.allowances;
     const names = new KeyLogger(item.names);
@@ -41,7 +34,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(11500);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -55,7 +48,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(1000);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -69,7 +62,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(500);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -95,7 +88,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(2320);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -109,7 +102,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(3260);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -123,7 +116,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(8445);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -137,7 +130,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(28000);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -151,7 +144,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(5000);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -165,7 +158,7 @@ describe('Income Tax 2017-18', () => {
         expect(value).toBe(1150);
       });
 
-      it(`should be called "${correctName}"`, () => {
+      it(`should be called '${correctName}'`, () => {
         expect(name).toBe(correctName);
       });
     });
@@ -174,7 +167,6 @@ describe('Income Tax 2017-18', () => {
       expect(names.getKeysNotAccessed()).toEqual([]);
       expect(values.getKeysNotAccessed()).toEqual([]);
     });
-
   });
 
   describe('Thresholds', () => {
@@ -206,9 +198,9 @@ describe('Income Tax 2017-18', () => {
 
     it('should have the right names', () => {
       expect(item.names).toHaveLength(3);
-      expect(item.names[0]).toBe("basic rate");
-      expect(item.names[1]).toBe("higher rate");
-      expect(item.names[2]).toBe("additional rate");
+      expect(item.names[0]).toBe('basic rate');
+      expect(item.names[1]).toBe('higher rate');
+      expect(item.names[2]).toBe('additional rate');
     });
 
     it('should have properties {names, unit, values} only', () => {
@@ -229,15 +221,14 @@ describe('Income Tax 2017-18', () => {
 
     it('should have the right names', () => {
       expect(item.names).toHaveLength(3);
-      expect(item.names[0]).toBe("default basic rate");
-      expect(item.names[1]).toBe("default higher rate");
-      expect(item.names[2]).toBe("default additional rate");
+      expect(item.names[0]).toBe('default basic rate');
+      expect(item.names[1]).toBe('default higher rate');
+      expect(item.names[2]).toBe('default additional rate');
     });
 
     it('should have properties {names, unit, values} only', () => {
       expect(Object.keys(item).sort()).toEqual(['names', 'unit', 'values']);
     });
-
   });
 
   describe('Savings Rates', () => {
@@ -254,16 +245,15 @@ describe('Income Tax 2017-18', () => {
 
     it('should have the right names', () => {
       expect(item.names).toHaveLength(4);
-      expect(item.names[0]).toBe("starting rate for savings");
-      expect(item.names[1]).toBe("savings basic rate");
-      expect(item.names[2]).toBe("savings higher rate");
-      expect(item.names[3]).toBe("savings additional rate");
+      expect(item.names[0]).toBe('starting rate for savings');
+      expect(item.names[1]).toBe('savings basic rate');
+      expect(item.names[2]).toBe('savings higher rate');
+      expect(item.names[3]).toBe('savings additional rate');
     });
 
     it('should have properties {names, unit, values} only', () => {
       expect(Object.keys(item).sort()).toEqual(['names', 'unit', 'values']);
     });
-
   });
 
   describe('Starting rate limit for savings', () => {
@@ -277,7 +267,6 @@ describe('Income Tax 2017-18', () => {
     it('should have properties {unit, value} only', () => {
       expect(Object.keys(item).sort()).toEqual(['unit', 'value']);
     });
-
   });
 
   describe('Dividend Rates', () => {
@@ -293,19 +282,17 @@ describe('Income Tax 2017-18', () => {
 
     it('should have the right names', () => {
       expect(item.names).toHaveLength(3);
-      expect(item.names[0]).toBe("dividend ordinary rate");
-      expect(item.names[1]).toBe("dividend upper rate");
-      expect(item.names[2]).toBe("dividend additional rate");
+      expect(item.names[0]).toBe('dividend ordinary rate');
+      expect(item.names[1]).toBe('dividend upper rate');
+      expect(item.names[2]).toBe('dividend additional rate');
     });
 
     it('should have properties {names, unit, values} only', () => {
       expect(Object.keys(item).sort()).toEqual(['names', 'unit', 'values']);
     });
-
   });
 
   it('should only have properties that are tested', () => {
     expect(data.getKeysNotAccessed()).toEqual([]);
   });
-
 });

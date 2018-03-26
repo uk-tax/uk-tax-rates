@@ -1,8 +1,8 @@
 
-const incomeTax2018 = require('./data/2018/income-tax-2018.json');
+const incomeTax2018 = require('./data/2017-18/income-tax-2017-18.json');
 
-console.log(incomeTax2018);
-
-export function getRates(name, year) {
+/* eslint import/prefer-default-export: 0 */
+// export function getRates(name, year) {
+export function getRates() {
   return incomeTax2018;
-};
+}

@@ -1,6 +1,5 @@
 
 import KeyLogger from './helpers/key-logger';
 
-export {
-  KeyLogger,
-};
+/* eslint import/prefer-default-export: 0 */
+export { KeyLogger };
