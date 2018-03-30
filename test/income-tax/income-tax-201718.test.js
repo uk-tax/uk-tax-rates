@@ -1,70 +1,60 @@
-// 1 [The Income Tax (Indexation) Order 2016](http://www.legislation.gov.uk/uksi/2016/1175/made)
 
+import numeral from 'numeral';
+
+import loadYaml from '../../src/yaml-loader';
 import { KeyLogger } from '../helpers';
 
-const testData = require('../../src/data/2017-18/income-tax-2017-18.json');
+// Takes path relative to /src/.
+const testData = loadYaml('../data/201718/income-tax-201718');
 
 describe('Income Tax 2017-18', () => {
   const data = new KeyLogger(testData);
 
-  it('should be for 2017-18', () => {
-    const item = data.taxYear;
-    expect(item).toBe('2017-18');
+  it('should be the income tax section for 2017-18', () => {
+    expect(data.section).toBe('income-tax');
+    expect(data.taxYear).toBe('2017-18');
   });
 
   describe('Allowances', () => {
-    const item = data.allowances;
+    function testAllowance(value, expectedValue, name, expectedName) {
+      const displayValue = numeral(expectedValue).format();
+
+      it(`should be £${displayValue}`, () => {
+        expect(value).toBe(expectedValue);
+      });
+
+      it(`should be called '${expectedName}'`, () => {
+        expect(name).toBe(expectedName);
+      });
+    }
+
+    const item = new KeyLogger(data.allowances);
+    const values = item;
     const names = new KeyLogger(item.names);
-    const values = new KeyLogger(item.values);
 
     it('should be in £', () => {
       expect(item.unit).toBe('GBP');
     });
 
-    it('should have properties {unit, names, values} only', () => {
-      expect(Object.keys(item).sort()).toEqual(['names', 'unit', 'values']);
-    });
-
     describe('Personal allowance', () => {
-      const value = values.personalAllowance;
-      const name = names.personalAllowance;
-      const correctName = 'personal allowance';
-
-      it('should be £11,500', () => {
-        expect(value).toBe(11500);
-      });
-
-      it(`should be called '${correctName}'`, () => {
-        expect(name).toBe(correctName);
-      });
+      testAllowance(
+        values.personalAllowance, 11500,
+        names.personalAllowance, 'personal allowance',
+      );
     });
 
     describe('Personal savings allowance', () => {
-      const value = values.personalSavingsAllowance;
-      const name = names.personalSavingsAllowance;
-      const correctName = 'personal savings allowance';
-
-      it('should be £1,000', () => {
-        expect(value).toBe(1000);
-      });
-
-      it(`should be called '${correctName}'`, () => {
-        expect(name).toBe(correctName);
-      });
+      testAllowance(
+        values.personalSavingsAllowance, 1000,
+        names.personalSavingsAllowance, 'personal savings allowance',
+      );
     });
 
     describe('Personal savings allowance (higher rate taxpayers)', () => {
-      const value = values.personalSavingsAllowanceHigherRate;
-      const name = names.personalSavingsAllowanceHigherRate;
-      const correctName = 'personal savings allowance (higher rate taxpayers)';
-
-      it('should be £500', () => {
-        expect(value).toBe(500);
-      });
-
-      it(`should be called '${correctName}'`, () => {
-        expect(name).toBe(correctName);
-      });
+      testAllowance(
+        values.personalSavingsAllowanceHigherRate, 500,
+        names.personalSavingsAllowanceHigherRate, 'personal savings allowance (higher rate taxpayers)',
+      );
     });
 
     describe('Income limit for personal allowance', () => {

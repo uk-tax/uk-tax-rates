@@ -7,6 +7,7 @@
   "author": "https://github.com/uk-tax/uk-tax-rates/graphs/contributors",
   "license": "CC-BY-4.0",
   "scripts": {
+    "build": "./build/build.js",
     "lint": "eslint ./",
     "test": "jest --coverage"
   },
@@ -19,6 +20,13 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jest": "^21.15.0",
     "jest": "^22.4.3",
-    "regenerator-runtime": "^0.11.1"
+    "json-loader": "^0.5.7",
+    "numeral": "^2.0.6",
+    "regenerator-runtime": "^0.11.1",
+    "yaml-loader": "^0.5.0"
+  },
+  "dependencies": {
+    "js-yaml": "^3.11.0",
+    "lodash": "^4.17.5"
   }
 }
